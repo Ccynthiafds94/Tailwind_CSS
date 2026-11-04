@@ -1,11 +1,456 @@
 <!doctype html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="h-screen flex items-center justify-center">
-        <button class="bg-red-500 text-white px-4 py-2 rounded-full font-bold text-2xl hover:bg-red-700 hover:uppercase">Don't click me!</button>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#15151d">
+    <meta name="description" content="Explore Tailwind CSS concepts with beginner-friendly explanations, code examples, and live interactive previews.">
+    <title>Learn Tailwind CSS — Tiny Tailwind School</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="antialiased" data-theme="dark">
+    <header class="site-header">
+        <a class="brand" href="#top" aria-label="Tiny Tailwind School home">
+            <span class="brand-mark" aria-hidden="true">t.</span>
+            <span>tiny tailwind school</span>
+        </a>
+        <nav class="top-nav" aria-label="Main navigation">
+            <a href="#start">Start here</a>
+            <a href="#explorer">Concepts</a>
+            <a href="#playground">Try it yourself</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+            <span class="theme-toggle-icon" aria-hidden="true">☼</span>
+            <span id="theme-toggle-label">Light mode</span>
+        </button>
+        <a class="nav-cta" href="#playground">Let’s build <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="top">
+        <section class="hero page-width" id="start">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR FRIENDLY FIRST STEP</p>
+                <h1>Tailwind CSS,<br><span>without the headache.</span></h1>
+                <p class="hero-description">Make websites by adding tiny design instructions right where your HTML lives. No big CSS mystery. Just one small class at a time.</p>
+                <div class="hero-actions">
+                    <a class="button button-dark" href="#explorer">Start learning <span aria-hidden="true">↓</span></a>
+                    <span class="read-time"><span aria-hidden="true">☕</span> 5-minute lesson</span>
+                </div>
+                <div class="hero-note">
+                    <span class="note-icon" aria-hidden="true">✳</span>
+                    <p><strong>New to CSS?</strong> Perfect. We’ll explain everything as we go.</p>
+                </div>
+            </div>
+
+            <div class="hero-art" aria-label="A visual example of a Tailwind-styled card">
+                <div class="art-sparkle sparkle-one" aria-hidden="true">✳</div>
+                <div class="art-sparkle sparkle-two" aria-hidden="true">✦</div>
+                <div class="floating-label label-top"><span class="label-dot violet"></span> bg-violet-100</div>
+                <div class="sample-card">
+                    <div class="sample-card-icon" aria-hidden="true">☀</div>
+                    <p class="sample-kicker">A LITTLE REMINDER</p>
+                    <h2>You’re doing<br>great.</h2>
+                    <p class="sample-caption">Styled with Tailwind ✨</p>
+                    <button class="sample-button" type="button">Keep going <span aria-hidden="true">→</span></button>
+                </div>
+                <div class="floating-label label-bottom"><span class="label-dot pink"></span> rounded-3xl</div>
+            </div>
+        </section>
+
+        <section class="concept-strip page-width" aria-label="The basic idea">
+            <div class="concept-heading">
+                <span class="concept-icon" aria-hidden="true">💡</span>
+                <div>
+                    <p class="concept-kicker">THE BIG IDEA</p>
+                    <h2>Classes are tiny design helpers.</h2>
+                </div>
+            </div>
+            <p class="concept-text">Instead of writing a separate CSS rule, you add ready-made helpers to an element. Each helper does one little job.</p>
+            <div class="concept-code" aria-label="Example Tailwind classes">
+                <span class="code-tag">&lt;div</span>
+                <span class="code-class">class="p-4 bg-violet-100 rounded-xl"</span>
+                <span class="code-tag">&gt;</span>
+            </div>
+        </section>
+
+        <section class="docs-workspace page-width" id="explorer">
+            <aside class="docs-sidebar" aria-label="Tailwind concepts">
+                <div class="sidebar-title">
+                    <span class="sidebar-mark" aria-hidden="true">✳</span>
+                    <div><p>THE LEARNING PATH</p><h2>Explore concepts</h2></div>
+                </div>
+                <label class="concept-search">
+                    <span aria-hidden="true">⌕</span>
+                    <input id="concept-search" type="search" placeholder="Find a concept..." autocomplete="off">
+                    <kbd>/</kbd>
+                </label>
+                <nav class="concept-nav" id="concept-nav" aria-label="Concept lessons">
+                    <p class="nav-group-label">CORE CONCEPTS</p>
+                    <button class="concept-link is-active" type="button" data-topic="styling" aria-current="page"><span>01</span> Styling with utility classes</button>
+                    <button class="concept-link" type="button" data-topic="states"><span>02</span> Hover, focus, and other states</button>
+                    <button class="concept-link" type="button" data-topic="responsive"><span>03</span> Responsive design</button>
+                    <button class="concept-link" type="button" data-topic="dark"><span>04</span> Dark mode</button>
+                    <button class="concept-link" type="button" data-topic="theme"><span>05</span> Theme variables</button>
+                    <button class="concept-link" type="button" data-topic="colors"><span>06</span> Colors</button>
+                    <button class="concept-link" type="button" data-topic="custom"><span>07</span> Adding custom styles</button>
+                    <button class="concept-link" type="button" data-topic="detect"><span>08</span> Detecting classes in source files</button>
+                    <button class="concept-link" type="button" data-topic="functions"><span>09</span> Functions and directives</button>
+                    <p class="nav-group-label">MORE TO EXPLORE</p>
+                    <button class="concept-link" type="button" data-topic="spacing"><span>10</span> Spacing &amp; sizing</button>
+                    <button class="concept-link" type="button" data-topic="typography"><span>11</span> Typography</button>
+                    <button class="concept-link" type="button" data-topic="borders"><span>12</span> Borders &amp; corners</button>
+                    <button class="concept-link" type="button" data-topic="shadows"><span>13</span> Shadows</button>
+                    <button class="concept-link" type="button" data-topic="flexbox"><span>14</span> Flexbox</button>
+                    <button class="concept-link" type="button" data-topic="grid"><span>15</span> Grid</button>
+                </nav>
+                <a class="sidebar-footer-link" href="#playground">Want to make a whole card? <span>Try the builder →</span></a>
+            </aside>
+
+            <div class="lesson-view" aria-live="polite">
+                <div class="lesson-breadcrumb"><span>LEARN TAILWIND</span><span aria-hidden="true">/</span><span id="lesson-category">THE BUILDING BLOCKS</span></div>
+                <p class="lesson-level" id="lesson-level">CONCEPT 01 · STARTER</p>
+                <h2 id="lesson-title">Spacing &amp; sizing</h2>
+                <p class="lesson-lead" id="lesson-lead"></p>
+                <a class="official-doc-link" id="official-doc-link" href="https://tailwindcss.com/docs/styling-with-utility-classes" target="_blank" rel="noopener noreferrer">Read the official Tailwind guide <span aria-hidden="true">↗</span></a>
+
+                <div class="lesson-explanation">
+                    <span class="explanation-icon" aria-hidden="true">💡</span>
+                    <div><h3>The simple idea</h3><p id="lesson-explanation"></p></div>
+                </div>
+
+                <div class="lesson-columns">
+                    <article class="lesson-detail-card">
+                        <div class="lesson-card-heading"><span>THE CLASS BREAKDOWN</span><span class="heading-dot"></span></div>
+                        <div class="class-breakdown" id="class-breakdown"></div>
+                        <div class="lesson-tip"><strong>Remember</strong><p id="lesson-tip"></p></div>
+                    </article>
+                    <article class="lesson-detail-card example-card">
+                        <div class="lesson-card-heading"><span>IN YOUR HTML</span><button class="example-copy" id="example-copy" type="button">Copy</button></div>
+                        <pre class="lesson-code"><code id="lesson-code"></code></pre>
+                        <p class="code-caption">Each class is a small instruction. Combine them to make a complete design.</p>
+                    </article>
+                </div>
+
+                <section class="concept-playground" aria-label="Interactive concept preview">
+                    <div class="try-heading">
+                        <div><span class="try-sparkle" aria-hidden="true">✳</span><div><p>TRY IT YOURSELF</p><h3>Change a class. See what happens.</h3></div></div>
+                        <span class="try-live"><span></span> LIVE PREVIEW</span>
+                    </div>
+                    <div class="try-workspace">
+                        <div class="try-controls">
+                            <label for="concept-option" id="concept-option-label">Try a different value</label>
+                            <select id="concept-option" class="builder-select"></select>
+                            <p id="concept-hint"></p>
+                        </div>
+                        <div class="try-preview-area">
+                            <div class="concept-demo-card bg-violet-100 p-6 rounded-2xl shadow-sm" id="concept-preview">
+                                <span class="concept-demo-kicker">A LITTLE PRACTICE</span>
+                                <div class="concept-demo-content" id="concept-demo-content">
+                                    <div class="concept-demo-text">
+                                        <strong class="concept-demo-title" id="preview-title">Room to breathe</strong>
+                                        <span class="concept-demo-copy" id="preview-copy">Change the selection to explore.</span>
+                                    </div>
+                                    <button class="concept-demo-button bg-violet-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition" id="concept-demo-button" type="button">Try hovering me <span aria-hidden="true">→</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="try-output"><span>THE CLASS YOU JUST TRIED</span><code id="concept-class-output" aria-live="polite"></code></div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <button id="previous-concept" type="button" disabled><span aria-hidden="true">←</span><span><small>PREVIOUS</small><strong>Start here</strong></span></button>
+                    <button id="next-concept" type="button"><span><small>NEXT CONCEPT</small><strong>Colors &amp; backgrounds</strong></span><span aria-hidden="true">→</span></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="lessons-section page-width" id="lessons">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> THE TINY LESSONS</p>
+                    <h2>Learn one little thing<br>at a time.</h2>
+                </div>
+                <p class="section-aside">Think of each class like a sticker.<br>Pick one, stick it on, see what happens.</p>
+            </div>
+
+            <div class="lesson-grid">
+                <article class="lesson-card lesson-spacing">
+                    <div class="lesson-topline"><span class="lesson-number">01</span><span class="lesson-category">GIVE IT SPACE</span></div>
+                    <h3>Padding is breathing room.</h3>
+                    <p><code>p-4</code> adds space <em>inside</em> the box. Bigger number, more breathing room.</p>
+                    <div class="lesson-demo spacing-demo">
+                        <div class="demo-box"><span>Hello, comfy space!</span></div>
+                        <span class="demo-caption">p-4 = padding all around</span>
+                    </div>
+                    <div class="class-pill"><span>p-4</span><span class="pill-meaning">padding: 1rem</span></div>
+                </article>
+
+                <article class="lesson-card lesson-color">
+                    <div class="lesson-topline"><span class="lesson-number">02</span><span class="lesson-category">ADD A COLOR</span></div>
+                    <h3>Backgrounds are easy.</h3>
+                    <p><code>bg-amber-100</code> means a soft amber background. Swap the color or number to explore.</p>
+                    <div class="lesson-demo color-demo">
+                        <div class="color-swatch"><span class="sun-icon" aria-hidden="true">☀</span><span>Sunny side up</span><span class="swatch-dot"></span></div>
+                        <span class="demo-caption">bg-amber-100 = pale amber</span>
+                    </div>
+                    <div class="class-pill"><span>bg-amber-100</span><span class="pill-meaning">background color</span></div>
+                </article>
+
+                <article class="lesson-card lesson-shape">
+                    <div class="lesson-topline"><span class="lesson-number">03</span><span class="lesson-category">SOFTEN THE EDGES</span></div>
+                    <h3>Make corners friendly.</h3>
+                    <p><code>rounded-2xl</code> rounds the corners. Try <code>rounded-full</code> for a pill or circle.</p>
+                    <div class="lesson-demo shape-demo">
+                        <div class="shape-row"><span class="shape-box shape-small"></span><span class="shape-box shape-big"></span><span class="shape-box shape-round"></span></div>
+                        <span class="demo-caption">rounded-md&nbsp;&nbsp; rounded-2xl&nbsp;&nbsp; rounded-full</span>
+                    </div>
+                    <div class="class-pill"><span>rounded-2xl</span><span class="pill-meaning">border radius</span></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="advanced-section page-width" id="advanced">
+            <div class="section-heading advanced-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> LEVEL 2 · GO A LITTLE DEEPER</p>
+                    <h2>Now make it work<br>in the real world.</h2>
+                </div>
+                <p class="section-aside">Responsive layouts, interactive states,<br>and the tricks developers use every day.</p>
+            </div>
+
+            <div class="advanced-callout">
+                <span class="advanced-callout-icon" aria-hidden="true">🧭</span>
+                <p><strong>A quick way to read a class:</strong> <code>md:hover:bg-violet-700</code> means “at medium screens and up, when hovered, use a darker violet background.” Read it from left to right: <em>when</em> → <em>what changes</em>.</p>
+            </div>
+
+            <div class="advanced-grid">
+                <article class="advanced-card">
+                    <div class="advanced-card-top"><span class="advanced-icon responsive-icon" aria-hidden="true">↔</span><span class="advanced-tag">RESPONSIVE DESIGN</span></div>
+                    <h3>One page, every screen.</h3>
+                    <p>Tailwind starts with the small-screen style. Add a prefix to change it at larger screen sizes. The prefixed style applies at that size <em>and above</em>.</p>
+                    <pre><code>&lt;h1 class="<code-token">text-2xl</code-token> <code-token>md:text-4xl</code-token> <code-token>lg:text-5xl</code-token>"&gt;
+  Looks good on every screen
+&lt;/h1&gt;</code></pre>
+                    <div class="advanced-note"><strong>Read it:</strong> small text by default → larger at medium → biggest at large.</div>
+                    <details class="learn-more">
+                        <summary>What are the usual screen prefixes?</summary>
+                        <p>In the default Tailwind setup: <code>sm:</code> starts at 640px, <code>md:</code> at 768px, <code>lg:</code> at 1024px, <code>xl:</code> at 1280px, and <code>2xl:</code> at 1536px. A project can customize these breakpoints.</p>
+                    </details>
+                </article>
+
+                <article class="advanced-card">
+                    <div class="advanced-card-top"><span class="advanced-icon state-icon" aria-hidden="true">◎</span><span class="advanced-tag">INTERACTIVE STATES</span></div>
+                    <h3>Make buttons feel alive.</h3>
+                    <p>Put a state prefix before a utility to apply it only when something happens: hover, keyboard focus, press, or disable.</p>
+                    <pre><code>&lt;button class="<code-token">bg-violet-600</code-token>
+  <code-token>hover:bg-violet-700</code-token>
+  <code-token>focus-visible:outline-2</code-token>
+  <code-token>active:scale-95</code-token>
+  <code-token>disabled:opacity-50</code-token>"&gt;
+  Save changes
+&lt;/button&gt;</code></pre>
+                    <div class="advanced-note"><strong>Accessibility tip:</strong> use <code>focus-visible:</code> so keyboard users can see where they are.</div>
+                </article>
+
+                <article class="advanced-card">
+                    <div class="advanced-card-top"><span class="advanced-icon layout-icon" aria-hidden="true">▦</span><span class="advanced-tag">FLEXBOX &amp; GRID</span></div>
+                    <h3>Arrange things without guessing.</h3>
+                    <p>Use Flexbox for a row or column of items. Use Grid when you want rows <em>and</em> columns together.</p>
+                    <pre><code>&lt;div class="<code-token">flex items-center justify-between</code-token>"&gt;
+  &lt;span&gt;Logo&lt;/span&gt;&lt;button&gt;Menu&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="<code-token">grid grid-cols-1 md:grid-cols-3 gap-4</code-token>"&gt;
+  &lt;!-- three cards on wider screens --&gt;
+&lt;/div&gt;</code></pre>
+                    <div class="advanced-note"><strong>Remember:</strong> <code>gap-4</code> adds space between items; it does not add space around the outside.</div>
+                </article>
+
+                <article class="advanced-card">
+                    <div class="advanced-card-top"><span class="advanced-icon dark-icon" aria-hidden="true">☾</span><span class="advanced-tag">DARK MODE</span></div>
+                    <h3>Give your page a night mode.</h3>
+                    <p>Pair a normal color with a <code>dark:</code> version. Tailwind applies the dark variant according to the dark-mode strategy configured for your project.</p>
+                    <pre><code>&lt;article class="<code-token">bg-white text-slate-900</code-token>
+  <code-token>dark:bg-slate-900</code-token>
+  <code-token>dark:text-white</code-token>"&gt;
+  Works in light and dark themes
+&lt;/article&gt;</code></pre>
+                    <div class="advanced-note"><strong>Tip:</strong> check your project’s dark-mode setting before expecting a toggle to control <code>dark:</code>.</div>
+                </article>
+
+                <article class="advanced-card">
+                    <div class="advanced-card-top"><span class="advanced-icon arbitrary-icon" aria-hidden="true">⌁</span><span class="advanced-tag">ARBITRARY VALUES</span></div>
+                    <h3>Need a one-off value? Use brackets.</h3>
+                    <p>Most of the time, use the built-in spacing and colors. When a design genuinely needs a specific value, square brackets let you write it directly.</p>
+                    <pre><code>&lt;div class="<code-token">w-[37px]</code-token>
+  <code-token>bg-[#f5f0ff]</code-token>
+  <code-token>grid-cols-[1fr_auto]</code-token>"&gt;
+  A custom width, color, and grid
+&lt;/div&gt;</code></pre>
+                    <div class="advanced-note"><strong>Use with care:</strong> repeated one-off values are a sign to create a shared design token instead.</div>
+                </article>
+
+                <article class="advanced-card">
+                    <div class="advanced-card-top"><span class="advanced-icon composition-icon" aria-hidden="true">⌘</span><span class="advanced-tag">COMPOSE &amp; REUSE</span></div>
+                    <h3>Keep class lists understandable.</h3>
+                    <p>Group related utilities in a readable order, extract repeated UI into a component, and use <code>group</code> when a child reacts to its parent.</p>
+                    <pre><code>&lt;a class="<code-token">group</code-token> flex items-center gap-3"&gt;
+  &lt;span&gt;Read the lesson&lt;/span&gt;
+  &lt;span class="<code-token">transition group-hover:translate-x-1</code-token>"&gt;
+    →
+  &lt;/span&gt;
+&lt;/a&gt;</code></pre>
+                    <div class="advanced-note"><strong>Why <code>group</code>?</strong> It lets a child respond when the parent link is hovered.</div>
+                </article>
+            </div>
+
+            <div class="advanced-project">
+                <div class="project-heading">
+                    <span class="project-badge">PUT IT TOGETHER</span>
+                    <h3>A responsive product card</h3>
+                    <p>This combines layout, spacing, responsive prefixes, color, and a hover state in one useful example.</p>
+                </div>
+                <pre class="project-code"><code>&lt;article class="<code-token">group grid gap-4 rounded-2xl bg-white p-4 shadow-sm</code-token>
+  <code-token>md:grid-cols-[140px_1fr] md:items-center</code-token>
+  <code-token>hover:shadow-lg transition-shadow</code-token>"&gt;
+  &lt;img class="<code-token">h-40 w-full rounded-xl object-cover md:h-full</code-token>"
+       src="plant.jpg" alt="A small plant in a ceramic pot"&gt;
+  &lt;div&gt;
+    &lt;p class="<code-token">text-sm text-emerald-700</code-token>"&gt;Easy care&lt;/p&gt;
+    &lt;h2 class="<code-token">mt-1 text-xl font-bold text-slate-900</code-token>"&gt;Sunny the plant&lt;/h2&gt;
+    &lt;p class="<code-token">mt-2 text-sm leading-6 text-slate-600</code-token>"&gt;
+      A cheerful little plant for your desk.
+    &lt;/p&gt;
+    &lt;button class="<code-token">mt-4 rounded-lg bg-emerald-700 px-4 py-2</code-token>
+      <code-token>text-sm font-semibold text-white hover:bg-emerald-800</code-token>
+      <code-token>focus-visible:outline-2</code-token>"&gt;Add to cart&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+
+            <div class="advanced-bottom-grid">
+                <article class="developer-tip-card">
+                    <p class="tip-eyebrow">A COMMON BUILD-TIME SURPRISE</p>
+                    <h3>Keep class names complete.</h3>
+                    <p>When Tailwind builds your CSS, it scans files for class names. If you create a class by joining fragments, the scanner may not see the finished name:</p>
+                    <pre><code><span class="bad-example">// Avoid building class names from fragments</span>
+`bg-${color}-600`</code></pre>
+                    <p>Instead, map choices to complete class names so they can be found:</p>
+                    <pre><code>const colors = {
+  violet: "<code-token">bg-violet-600</code-token>",
+  mint: "<code-token">bg-emerald-600</code-token>"
+};</code></pre>
+                </article>
+
+                <article class="developer-tip-card production-tip">
+                    <p class="tip-eyebrow">WHEN YOU SHIP A REAL SITE</p>
+                    <h3>Use the right Tailwind setup.</h3>
+                    <p>This learning page uses Tailwind’s browser CDN to make examples quick to try. The CDN is handy for learning and prototypes, but Tailwind recommends a build setup for production.</p>
+                    <ol>
+                        <li>Install Tailwind for your framework or build tool.</li>
+                        <li>Build CSS as part of your app’s normal workflow.</li>
+                        <li>Check your browser’s developer tools for layout and contrast.</li>
+                    </ol>
+                    <p class="tip-footnote">Tailwind v3 and v4 have different setup instructions. Follow the docs for the version your project actually uses.</p>
+                </article>
+            </div>
+
+            <div class="practice-lab">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR ADVANCED PRACTICE</p>
+                    <h3>Try these small challenges.</h3>
+                    <p>Build confidence by changing one thing at a time. Can you explain which utility caused each change?</p>
+                </div>
+                <ol class="challenge-list">
+                    <li><span>01</span>Make a card two columns from <code>md:</code> and up.</li>
+                    <li><span>02</span>Add a visible keyboard focus style to a button.</li>
+                    <li><span>03</span>Make a link’s arrow move using <code>group-hover:</code>.</li>
+                    <li><span>04</span>Give a panel different colors with <code>dark:</code>.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="playground-section page-width" id="playground">
+            <div class="playground-intro">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR TURN</p>
+                <h2>Build a card.<br><span>No wrong answers.</span></h2>
+                <p>Pick a background, choose some padding, and watch your Tailwind classes come together.</p>
+                <div class="playground-tip"><span aria-hidden="true">✦</span><span>See how each choice changes both the design <em>and</em> the code.</span></div>
+            </div>
+
+            <div class="builder">
+                <div class="builder-controls">
+                    <div class="builder-heading"><span class="builder-dot"></span><span>YOUR DESIGN CONTROLS</span></div>
+                    <label class="control-label" for="color-choice">1. Pick a color</label>
+                    <div class="color-options" role="group" aria-label="Choose a card color">
+                        <button class="color-option is-selected" type="button" data-color="violet" aria-label="Violet" aria-pressed="true"><span class="color-choice-dot violet-choice"></span></button>
+                        <button class="color-option" type="button" data-color="mint" aria-label="Mint" aria-pressed="false"><span class="color-choice-dot mint-choice"></span></button>
+                        <button class="color-option" type="button" data-color="peach" aria-label="Peach" aria-pressed="false"><span class="color-choice-dot peach-choice"></span></button>
+                        <button class="color-option" type="button" data-color="sky" aria-label="Sky blue" aria-pressed="false"><span class="color-choice-dot sky-choice"></span></button>
+                    </div>
+
+                    <label class="control-label" for="padding-choice">2. Give it some space</label>
+                    <select id="padding-choice" class="builder-select">
+                        <option value="p-3">A little — p-3</option>
+                        <option value="p-6" selected>Just right — p-6</option>
+                        <option value="p-10">Extra roomy — p-10</option>
+                    </select>
+
+                    <label class="control-label" for="rounding-choice">3. Choose your corners</label>
+                    <select id="rounding-choice" class="builder-select">
+                        <option value="rounded-lg">A little round — rounded-lg</option>
+                        <option value="rounded-2xl" selected>Extra soft — rounded-2xl</option>
+                        <option value="rounded-full">Super round — rounded-full</option>
+                    </select>
+                </div>
+
+                <div class="builder-preview">
+                    <div class="preview-heading"><span>LIVE PREVIEW</span><span class="live-dot">● LIVE</span></div>
+                    <div class="preview-stage">
+                        <div class="live-card bg-violet-100 p-6 rounded-2xl" id="live-card">
+                            <span class="live-card-emoji" aria-hidden="true">🌱</span>
+                            <span class="live-card-title">Little by little</span>
+                            <span class="live-card-copy">You’re learning Tailwind!</span>
+                        </div>
+                    </div>
+                    <div class="code-output">
+                        <span class="output-label">YOUR TAILWIND CLASSES</span>
+                        <code id="class-output" aria-live="polite">bg-violet-100 p-6 rounded-2xl</code>
+                        <button class="copy-button" id="copy-button" type="button"><span id="copy-label">Copy classes</span><span aria-hidden="true">⧉</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-step page-width">
+            <div class="next-icon" aria-hidden="true">🚀</div>
+            <div>
+                <p class="next-kicker">YOU’VE GOT THE IDEA!</p>
+                <h2>That’s Tailwind: tiny classes, big changes.</h2>
+                <p>Try adding <code>text-xl</code> to make text bigger, or <code>shadow-lg</code> to add a shadow. You’re ready to experiment.</p>
+            </div>
+            <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+        </section>
+    </main>
+
+    <footer class="site-footer page-width">
+        <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">t.</span><span>tiny tailwind school</span></a>
+        <p>Made for curious beginners <span aria-hidden="true">✿</span></p>
+    </footer>
+
+    <div class="class-bank" aria-hidden="true">
+        <span class="bg-violet-100 bg-emerald-100 bg-orange-100 bg-sky-100"></span>
+        <span class="p-3 p-6 p-10 rounded-lg rounded-2xl rounded-full"></span>
+        <span class="bg-white bg-slate-900 text-slate-900 text-white text-sm text-xl text-3xl text-violet-900 text-slate-600 font-bold leading-6 tracking-tight mt-2"></span>
+        <span class="shadow-sm shadow-md shadow-xl border border-violet-200 rounded-xl"></span>
+        <span class="flex flex-col flex-row items-start items-center justify-between gap-2 gap-3 grid grid-cols-1 grid-cols-2 grid-cols-3 md:grid-cols-2 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3"></span>
+        <span class="hover:bg-violet-700 hover:-translate-y-1 active:scale-95 transition-shadow"></span>
+        <span class="w-40 w-[13rem] bg-[#f5f0ff]"></span>
+        <span class="bg-violet-600 px-4 py-2 text-sm font-semibold rounded-lg transition"></span>
+        <span class="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:ring-4 active:scale-95 bg-emerald-600 text-blue-900 bg-blue-50"></span>
+    </div>
+    <script src="app.js"></script>
+</body>
 </html>
