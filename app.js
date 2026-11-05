@@ -49,6 +49,7 @@ roundingChoice.addEventListener("change", updateCard);
 themeToggle.addEventListener("click", () => {
     const isDark = document.body.dataset.theme !== "dark";
     document.body.dataset.theme = isDark ? "dark" : "light";
+    document.body.classList.toggle("dark", isDark);
     themeToggle.setAttribute("aria-pressed", String(isDark));
     themeToggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
     themeToggleLabel.textContent = isDark ? "Light mode" : "Dark mode";
@@ -581,11 +582,11 @@ function updateConceptPreview() {
     const classes = classListFor(concept, option);
     const breakdownClasses = [...new Set(classes)];
 
-    conceptPreview.className = "concept-demo-card";
-    conceptDemoContent.className = "concept-demo-content";
-    document.querySelector("#preview-title").className = "concept-demo-title";
-    document.querySelector("#preview-copy").className = "concept-demo-copy";
-    document.querySelector("#concept-demo-button").className = "concept-demo-button";
+    conceptPreview.className = "concept-demo-card mx-auto w-full max-w-xl";
+    conceptDemoContent.className = "concept-demo-content flex flex-col gap-3";
+    document.querySelector("#preview-title").className = "concept-demo-title block font-display text-xl font-extrabold";
+    document.querySelector("#preview-copy").className = "concept-demo-copy block text-sm";
+    document.querySelector("#concept-demo-button").className = "concept-demo-button inline-flex items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-violet-700 focus-visible:outline-2 focus-visible:outline-offset-2";
 
     if (concept.target === "layout") {
         conceptPreview.classList.add(...concept.baseClasses.split(" "));
@@ -607,7 +608,7 @@ function updateConceptPreview() {
 
     classBreakdown.replaceChildren(...breakdownClasses.map((word) => {
         const row = document.createElement("div");
-        row.className = "breakdown-row";
+        row.className = "breakdown-row flex min-w-0 items-center justify-between gap-2";
         const name = document.createElement("code");
         name.textContent = word;
         const description = document.createElement("span");
